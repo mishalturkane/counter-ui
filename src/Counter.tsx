@@ -3,7 +3,7 @@ import { useWallet, useConnection } from "@solana/wallet-adapter-react";
 import { Program, AnchorProvider, BN } from "@coral-xyz/anchor";
 import type { Idl } from "@coral-xyz/anchor";
 import { PublicKey, SystemProgram } from "@solana/web3.js";
-import idl from "./counter_app.json"; 
+import idl from "./counter_contract.json"; 
 
 const PROGRAM_ID = new PublicKey("FfDz2DA8hhAZmYPeNZz9Bh4gTpUnv5tnsd3NQw9TtX5E");  
 const COUNTER_SEED = "counter";
@@ -109,7 +109,7 @@ const Counter: React.FC = () => {
       }
       await loadCounter();
     } catch (err: any) {
-      alert("Transaction failed:" + err.message);
+      alert("Transaction failed: land code" + err.message);
     }
     setLoading(false);
   };

@@ -1,7 +1,7 @@
 {
-  "address": "FfDz2DA8hhAZmYPeNZz9Bh4gTpUnv5tnsd3NQw9TtX5E",
+  "address": "787w49XYNKgFx8uaHsxQYAEvKFrhHm2gE2syzH3LBy9J",
   "metadata": {
-    "name": "counter_app",
+    "name": "counter_contract",
     "version": "0.1.0",
     "spec": "0.1.0",
     "description": "Created with Anchor"
@@ -163,13 +163,8 @@
   "errors": [
     {
       "code": 6000,
-      "name": "Overflow",
-      "msg": "Overflow occurred when incrementing"
-    },
-    {
-      "code": 6001,
-      "name": "Underflow",
-      "msg": "Underflow occurred when decrementing"
+      "name": "CustomError",
+      "msg": "Custom error message"
     }
   ],
   "types": [
@@ -184,6 +179,13 @@
           }
         ]
       }
+    }
+  ],
+  "constants": [
+    {
+      "name": "SEED",
+      "type": "string",
+      "value": "\"anchor\""
     }
   ]
 }
