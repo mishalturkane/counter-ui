@@ -12,7 +12,7 @@ export function Balance() {
       if (publicKey) {
         const lamports = await connection.getBalance(publicKey);
         const sol = lamports / LAMPORTS_PER_SOL;
-        console.log("land balance dikh gya", sol);    // ← here
+        console.log("land balance dikh gya", sol);    // ← here 
         setBalance(sol);
       }
     };

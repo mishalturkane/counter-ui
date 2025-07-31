@@ -1,40 +1,35 @@
-// src/App.tsx
-
 import React from "react";
-import {
-  ConnectionProvider,
-  WalletProvider,
-} from "@solana/wallet-adapter-react";
+import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react";
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
-import "@solana/wallet-adapter-react-ui/styles.css";
+import {
+  PhantomWalletAdapter,
+  SolflareWalletAdapter,
+} from "@solana/wallet-adapter-wallets";
 import {
   WalletDisconnectButton,
   WalletMultiButton,
 } from "@solana/wallet-adapter-react-ui";
-import { PhantomWalletAdapter } from "@solana/wallet-adapter-wallets";
+import Counter from "./Counter";
 
-import CounterApp from "./CounterApp";
+const networkEndpoint = "https://devnet.helius-rpc.com/?api-key=47afb476-40d6-408e-aa60-11b3ea141bb8"; // Or your preferred RPC
 
-function App() {
-  // 👇 include your desired wallets here
-  const wallets = [new PhantomWalletAdapter()];
+const wallets = [new PhantomWalletAdapter(), new SolflareWalletAdapter()];
 
+const App: React.FC = () => {
   return (
-    <ConnectionProvider endpoint="https://api.devnet.solana.com">
+    <ConnectionProvider endpoint={networkEndpoint}>
       <WalletProvider wallets={wallets} autoConnect>
         <WalletModalProvider>
-          <div className="bg-black flex flex-col min-h-screen text-white items-center justify-center">
-            <nav className="flex p-4 rounded-md gap-4 bg-[#dadada] mb-6">
-              <WalletMultiButton />
-              <WalletDisconnectButton />
-            </nav>
-
-            <CounterApp />
-          </div>
+          <nav className="flex p-4 bg-gray-200 gap-4">
+            {/* Wallet connect buttons */}
+            <WalletMultiButton />
+            <WalletDisconnectButton />
+          </nav>
+          <Counter />
         </WalletModalProvider>
       </WalletProvider>
     </ConnectionProvider>
   );
-}
+};
 
 export default App;
